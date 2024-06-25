@@ -1,0 +1,44 @@
+path환경설정할 것 ex)C:\Users\jknam\AppData\Roaming\Python\Python38\Scripts
+
+ipynb -> py 변환
+
+pip install nbconvert
+jupyter-nbconvert --to script 노트북파일.ipynb
+
+-여러파일의 경우
+jupyter nbconvert --to script filename1.ipynb filename1.ipynb
+
+-바꿀파일이름 지정
+pip install ipynb-py-convert
+ipynb-py-convert 현재파일명.ipynb 바꿀파일명.py
+
+
+실행파일 만들기
+1. pip install pyinstaller
+2  pyinstaller 파일이름.py
+   -option 정리-
+     -w : 콘솔 비 비활성화, -F : 실행파일 하나만 생성, --add-data='포함할 파일1; 저장할 위치1' --add-data='포함할 파일2; 저장할 위치' 파일이름.py				
+예) pyinstaller -w -F --add-data mozip-*.gif;. --add-data mozip.txt;. -n 바꿀파일이름 jk.py
+
+exe파일 내용변경
+filename.spec 파일 옵션변경후
+pyinstaller filename.spec 실행후
+exe file 실행
+
+
+크롬드라이버 자동업데트 설정
+import chromedriver_autoinstaller
+chromedriver_autoinstaller.install()
+
+#파일의 상대주소를 절대주소로 변경하는 함수 : exe파일을 만드는데 중요한 함수
+def resource_path(상대경로) :
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, 상대경로)
+
+
+
+
